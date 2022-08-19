@@ -15,6 +15,7 @@ namespace Editor.Stats
         private SerializedProperty _maxValue;
         private SerializedProperty _statFloatProperty;
         private SerializedProperty _initialValue;
+        private SerializedProperty _currentValue;
         
         private Rect _firstLineRect;
         private Rect _secondLineLabelRect;
@@ -35,6 +36,7 @@ namespace Editor.Stats
             _maxValue = property.FindPropertyRelative("_maxValue");
             _statFloatProperty = _maxValue.FindPropertyRelative("_baseValue");
             _initialValue = property.FindPropertyRelative("_initialValue");
+            _currentValue = property.FindPropertyRelative("_currentValue");
         }
         
         private void SetupRect(Rect position)
@@ -53,6 +55,8 @@ namespace Editor.Stats
             EditorGUI.LabelField(_secondLineLabelRect, "Initial value");
             _initialValue.floatValue =
                 EditorGUI.Slider(_secondLineSliderRect, _initialValue.floatValue, 0f, _statFloatProperty.floatValue);
+
+            _currentValue.floatValue = _initialValue.floatValue;
         }
         
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

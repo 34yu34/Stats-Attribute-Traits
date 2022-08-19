@@ -48,6 +48,11 @@ namespace Stats
             }
         }
 
+        public bool HasEffect(TraitEffect effect)
+        {
+            return _modifications.ContainsKey(effect);
+        }
+
         private void RecalculateValue()
         {
             _calculatedValue = _baseValue;

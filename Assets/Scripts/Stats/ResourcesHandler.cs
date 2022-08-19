@@ -29,6 +29,16 @@ namespace Stats
             }
         }
 
+        public bool HasEffect(TraitEffect effect)
+        {
+            if (effect.EffectsLines.Count == 0)
+            {
+                return false;
+            }
+
+            return GetResource(effect.EffectsLines[0]._resource).HasEffect(effect);
+        }
+
         public ResourceInstance GetResource(Resource resource)
         {
             return _resources[(int) resource];

@@ -16,10 +16,10 @@ MonoBehaviour:
   - _traitsType: 0
     _stat: 0
     _resource: 0
-    _modificationValue: 0
-    _modificationType: 1
+    _modificationValue: 10
+    _modificationType: 0
   - _traitsType: 1
     _stat: 2
     _resource: 0
-    _modificationValue: 0
-    _modificationType: 0
+    _modificationValue: 10
+    _modificationType: 1

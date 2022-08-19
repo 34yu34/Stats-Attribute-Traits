@@ -11,7 +11,7 @@ namespace Editor.Stats
     public class StatEnumWriter
     {
         public const string EXTENSION = ".cs";
-        public const string PATH = "Assets/Resources/";
+        public const string PATH = "Assets/Stats/";
         public const string STAT_FILE_NAME = "Stat";
         public const string RESOURCE_FILE_NAME = "Resource";
 

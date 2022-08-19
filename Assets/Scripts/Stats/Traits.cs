@@ -28,5 +28,17 @@ namespace Stats
             _statsHandler.RemoveEffect(effect);
             _resourcesHandler.RemoveEffect(effect);
         }
+
+        public bool HasEffect(TraitEffect effect)
+        {
+            if (effect.EffectsLines.Count == 0)
+            {
+                return false;
+            }
+
+            return effect.EffectsLines[0]._traitsType == TraitsTypes.Stat
+                    ? _statsHandler.HasEffect(effect) 
+                    : _resourcesHandler.HasEffect(effect);
+        }
     }
 }

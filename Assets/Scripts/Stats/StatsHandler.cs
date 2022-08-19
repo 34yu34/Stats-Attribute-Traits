@@ -35,6 +35,16 @@ namespace Stats
             }
         }
 
+        public bool HasEffect(TraitEffect effect)
+        {
+            if (effect.EffectsLines.Count == 0)
+            {
+                return false;
+            }
+
+            return GetStat(effect.EffectsLines[0]._stat).HasEffect(effect);
+        }
+
         public StatInstance this[Stat stat] => GetStat(stat);
 
         public StatInstance GetStat(Stat stat)
