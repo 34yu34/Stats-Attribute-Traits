@@ -4,29 +4,29 @@ namespace Stats
 {
     public class Traits : MonoBehaviour
     {
-        [SerializeField] private StatsHandler _stats;
-        [SerializeField] private ResourcesHandler _resources;
+        [SerializeField] private StatsHandler _statsHandler;
+        [SerializeField] private ResourcesHandler _resourcesHandler;
 
         public StatInstance GetStat(Stat stat)
         {
-            return _stats.GetStat(stat);
+            return _statsHandler.GetStat(stat);
         }
 
         public ResourceInstance GetResource(Resource resource)
         {
-            return _resources.GetResource(resource);
+            return _resourcesHandler.GetResource(resource);
         }
 
         public void AddEffect(TraitEffect effect)
         {
-            _stats.AddEffect(effect);
-            _resources.AddEffect(effect);
+            _statsHandler.AddEffect(effect);
+            _resourcesHandler.AddEffect(effect);
         }
 
         public void RemoveEffect(TraitEffect effect)
         {
-            _stats.RemoveEffect(effect);
-            _resources.RemoveEffect(effect);
+            _statsHandler.RemoveEffect(effect);
+            _resourcesHandler.RemoveEffect(effect);
         }
     }
 }

@@ -304,28 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732725a2c3854413948da109767e9782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats:
-    _stats:
-    - _baseValue: 0
-      _calculatedValue: 0
-    - _baseValue: 0
-      _calculatedValue: 0
-    - _baseValue: 0
-      _calculatedValue: 0
-  _resources:
-    _resources:
-    - _initialValue: 0
-      _currentValue: 0
-      _maxValue:
-        _baseValue: 0
-        _calculatedValue: 0
-    - _initialValue: 0
-      _currentValue: 0
-      _maxValue:
-        _baseValue: 0
-        _calculatedValue: 0
-    - _initialValue: 0
-      _currentValue: 0
-      _maxValue:
-        _baseValue: 0
-        _calculatedValue: 0
+  _statsHandler:
+    _stats: []
+  _resourcesHandler:
+    _resources: []

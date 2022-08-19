@@ -6,12 +6,9 @@ namespace Editor.Stats
 {
     public abstract class HandlersDrawer : PropertyDrawer
     {
-
-        protected Rect _baseRect;
-        protected float _rowHeight;
-
         protected bool _showList;
-        
+        private RectDivider _rectDivider;
+
         protected abstract Array TraitEnumNames { get; }
         protected abstract SerializedProperty TraitListProperty { get; }
         protected abstract string TraitListName { get; }
@@ -21,10 +18,9 @@ namespace Editor.Stats
         public override void OnGUI(Rect position, SerializedProperty property,
             GUIContent label)
         {
-            _baseRect = position;
-            _rowHeight = base.GetPropertyHeight(property, label);
+            _rectDivider = new RectDivider(position, 1 + (_showList ? LinePerTrait * TraitEnumNames.Length : 0));
+            _showList =  EditorGUI.Foldout(_rectDivider.GetNext(), _showList, TraitListName);
             
-            _showList =  EditorGUI.Foldout(GetFirstRect(), _showList, TraitListName);
 
             if (!_showList) return;
             
@@ -39,7 +35,7 @@ namespace Editor.Stats
             AssureArraySize(index);
 
             EditorGUI.PropertyField(
-                GetRectForLine(index), 
+                _rectDivider.GetNext(LinePerTrait), 
                 TraitListProperty.GetArrayElementAtIndex(index),
                 new GUIContent((string) TraitEnumNames.GetValue(index))
             );
@@ -51,22 +47,6 @@ namespace Editor.Stats
             {
                 TraitListProperty.InsertArrayElementAtIndex(index);
             }
-        }
-
-        private Rect GetFirstRect()
-        {
-            return new Rect(
-                new Vector2(_baseRect.x, _baseRect.y),
-                new Vector2(_baseRect.width, _rowHeight)
-            );
-        }
-
-        private Rect GetRectForLine(int index)
-        {
-            return new Rect(
-                new Vector2(_baseRect.x, _baseRect.y + _rowHeight + _rowHeight * index * LinePerTrait),
-                new Vector2(_baseRect.width, _rowHeight * LinePerTrait)
-            );
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)

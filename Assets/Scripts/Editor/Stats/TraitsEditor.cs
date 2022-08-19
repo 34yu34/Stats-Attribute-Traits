@@ -10,8 +10,8 @@ namespace Editor.Stats
     {
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_stats"));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_resources"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_statsHandler"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_resourcesHandler"));
 
             if (GUILayout.Button("Open Stat Window"))
             {

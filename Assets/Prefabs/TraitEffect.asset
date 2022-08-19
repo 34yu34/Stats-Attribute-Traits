@@ -17,7 +17,7 @@ MonoBehaviour:
     _stat: 0
     _resource: 0
     _modificationValue: 0
-    _modificationType: 0
+    _modificationType: 1
   - _traitsType: 1
     _stat: 2
     _resource: 0
