@@ -305,6 +305,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statsHandler:
-    _stats: []
+    _stats:
+    - _baseValue: 34
+      _calculatedValue: 34
+    - _baseValue: 12
+      _calculatedValue: 12
+    - _baseValue: 23
+      _calculatedValue: 23
   _resourcesHandler:
-    _resources: []
+    _resources:
+    - _initialValue: 0
+      _currentValue: 0
+      _maxValue:
+        _baseValue: 0
+        _calculatedValue: 0
+    - _initialValue: 0
+      _currentValue: 0
+      _maxValue:
+        _baseValue: 0
+        _calculatedValue: 0
+    - _initialValue: 0
+      _currentValue: 0
+      _maxValue:
+        _baseValue: 0
+        _calculatedValue: 0
