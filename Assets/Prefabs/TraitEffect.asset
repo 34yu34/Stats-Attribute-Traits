@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _effectLines:
   - _traitsType: 0
-    _stat: 0
+    _stat: 1
     _resource: 0
     _modificationValue: 10
     _modificationType: 0
   - _traitsType: 1
     _stat: 2
-    _resource: 0
+    _resource: 1
     _modificationValue: 10
     _modificationType: 1
