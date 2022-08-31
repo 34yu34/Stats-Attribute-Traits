@@ -43,5 +43,10 @@ namespace Stats
         {
             _currentValue = Mathf.Clamp(newValue, 0f, _maxValue.ModifiedValue);
         }
+
+        public float FillPercentage()
+        {
+            return _currentValue / _maxValue.ModifiedValue;
+        }
     }
 }
