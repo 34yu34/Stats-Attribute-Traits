@@ -17,6 +17,19 @@ namespace Stats
             return _resourcesHandler.GetResource(resource);
         }
 
+        public ResourceInstance Get(Resource resource)
+        {
+            return _resourcesHandler.GetResource(resource);
+        }
+
+        public StatInstance Get(Stat stat)
+        {
+            return _statsHandler.GetStat(stat);
+        }
+        
+        public ResourceInstance this[Resource resource] => Get(resource);
+        public StatInstance this[Stat stat] => Get(stat);
+
         public void AddEffect(TraitEffect effect)
         {
             _statsHandler.AddEffect(effect);
