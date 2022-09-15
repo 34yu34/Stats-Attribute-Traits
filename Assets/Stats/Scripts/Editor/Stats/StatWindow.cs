@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Stats;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -9,7 +10,7 @@ namespace Editor.Stats
 {
     public class StatWindow : EditorWindow
     {
-        private string[] _newStatsNames = {};
+        private TraitsDatabaseHandler _writer;
 
 
         [MenuItem("Window/Stats/Stats and Resources Window")]
@@ -22,7 +23,7 @@ namespace Editor.Stats
 
         private void Awake()
         {
-            _newStatsNames = Enum.GetNames(typeof(Stat));
+            _writer = new TraitsDatabaseHandler();
         }
 
         private void OnGUI()
@@ -40,7 +41,7 @@ namespace Editor.Stats
 
         }
 
-        private static void OpenCodeFileButtons()
+        private void OpenCodeFileButtons()
         {
             EditorGUILayout.BeginHorizontal();
             
@@ -50,23 +51,23 @@ namespace Editor.Stats
             EditorGUILayout.EndHorizontal();
         }
         
-        private static void GenerateDefaultFilesButton()
+        private void GenerateDefaultFilesButton()
         {
             if (!GUILayout.Button("Generate Default Files")) return;
             
-            StatEnumWriter.GenerateBlankFile(TraitsTypes.Stat);
-            StatEnumWriter.GenerateBlankFile(TraitsTypes.Resource);
+            _writer.GenerateBlankFile(TraitsTypes.Stat);
+            _writer.GenerateBlankFile(TraitsTypes.Resource);
         }
         
 
-        private static void OpenFileButtonFor(TraitsTypes types)
+        private void OpenFileButtonFor(TraitsTypes trait)
         {
-            if (!GUILayout.Button($"Open {StatEnumWriter.ToName(types)} file")) return;
+            if (!GUILayout.Button($"Open {_writer.GetName(trait)} file")) return;
 
-            OpenFile(types);
+            OpenFile(trait);
         }
 
-        private static void OpenFile(TraitsTypes types)
+        private  void OpenFile(TraitsTypes types)
         {
             var asset = LoadFile(types);
             if (!asset)
@@ -77,15 +78,15 @@ namespace Editor.Stats
             AssetDatabase.OpenAsset(asset);
         }
 
-        private static Object LoadFile(TraitsTypes types)
+        private Object LoadFile(TraitsTypes type)
         {
-            return AssetDatabase.LoadAssetAtPath(StatEnumWriter.GetPath(types), typeof(MonoScript));
+            return AssetDatabase.LoadAssetAtPath(_writer.ShowPath(type), typeof(MonoScript));
         }
 
-        private static Object GenerateBlankAsset(TraitsTypes types)
+        private Object GenerateBlankAsset(TraitsTypes trait)
         {
-            StatEnumWriter.GenerateBlankFile(types);
-            var asset = AssetDatabase.LoadAssetAtPath(StatEnumWriter.GetPath(types), typeof(MonoScript));
+            _writer.GenerateBlankFile(trait);
+            var asset = AssetDatabase.LoadAssetAtPath(_writer.ShowPath(trait), typeof(MonoScript));
             return asset;
         }
 

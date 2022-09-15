@@ -6,7 +6,7 @@ namespace Stats
 {
 	public enum Stat 
 	{
-		Strength,
+		Bully,
 		Wisdom,
 		Luck,
 	}
