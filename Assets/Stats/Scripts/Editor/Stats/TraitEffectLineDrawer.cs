@@ -55,7 +55,7 @@ namespace Editor.Stats
 
         private bool IsResource()
         {
-            return  _traitsTypeProperty.enumValueIndex == 1;
+            return  _traitsTypeProperty.enumValueIndex == (int)TraitsTypes.Resource;
         }
 
         private string ToText(TraitModificationType type)
